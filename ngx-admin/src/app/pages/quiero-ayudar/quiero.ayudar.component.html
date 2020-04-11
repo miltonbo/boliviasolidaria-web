@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <nb-card>
+        <nb-card-header>
+          <h3>Como le gustaria ayudar ?</h3>
+        </nb-card-header>
+        <nb-card-body>
+
+          <div class="col-12">
+            <nb-card>
+              <nb-tabset fullWidth>
+                <nb-tab tabTitle="Con dinero" responsive>
+                  <H4>Transferencia Bancaria</H4>
+                  <div *ngFor="let empresa of receptor">
+                    <nb-card class="col cuenta" *ngFor="let cuenta of empresa.cuentas">
+                      <nb-card-body>
+                        <div>
+                          <label><strong>{{cuenta.banco}}</strong></label>
+                        </div>
+                        <div>
+                          <label><strong>{{cuenta.tipoCuenta}}</strong>: {{cuenta.nroCuenta}} </label>
+                        </div>
+
+                        <div>
+                          <label><strong>Titular</strong>: {{cuenta.titular}} </label>
+                        </div>
+                        <div>
+                          <label><strong>{{cuenta.documento}}</strong>: {{cuenta.nroDocumento}} </label>
+                        </div>
+                      </nb-card-body>
+                    </nb-card>
+                  </div>
+                </nb-tab>
+                <nb-tab tabTitle="Con Productos">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <span> A continuaci&oacute;n le mostramos una lista de lugares para que pueda
+                          dejar su donaci&oacute;n. Puede buscar la que le quede m&aacute;s cerca a usted.
+                        </span>
+
+                        <nb-card class="col cuenta" *ngFor="let punto of puntosAcopio">
+                          <nb-card-body>
+                            <div>
+                              <label><strong>Instituci&oacute;n</strong>: {{punto.titulo}} </label>
+                            </div>
+                            
+    
+                            <div>
+                              <label><strong>Responsable</strong> : {{punto.responsable}} </label>
+                            </div>
+                            <div>
+                              <label><strong>Contacto</strong>: {{punto.contacto}} </label>
+                            </div>
+                          </nb-card-body>
+                        </nb-card>
+
+
+                      </div>
+                      <div class="col-lg-6">
+                        <ngx-gmaps [center]="center" [puntosAcopio]="puntosAcopio" ></ngx-gmaps>
+                      </div>
+                    </div>
+                  </div>
+
+                </nb-tab>
+
+              </nb-tabset>
+            </nb-card>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+</div>

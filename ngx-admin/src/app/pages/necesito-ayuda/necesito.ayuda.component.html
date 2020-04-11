@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <nb-card>
+                <nb-card-header>
+                    <h3>Nueva solicitud de Ayuda</h3>
+                </nb-card-header>
+                <nb-card-body>
+                    <span>Algunos de nuestros donantes revisar&aacute; su solicitud y vera la forma de brindarle
+                        colaboracion</span>
+                    <span>Importante aclarar que las ayudas son en productos como: arroz, az&uacute;car, etc.</span>
+                    <br />
+                    <br />
+
+                    <div class="form-group">
+                        <label for="txtNombreCompleto" class="label">Nombre Completo</label>
+                        <input type="text" nbInput fullWidth id="txtNombreCompleto">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtDireccion" class="label">Direcci&oacute;n</label>
+                        <input type="text" nbInput fullWidth id="txtDireccion"> 
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtProductosNecesita" class="label"> Qu&eacute; productos principalmente necesita ?</label>
+                        <input type="text" nbInput fullWidth id="txtProductosNecesita">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtNroCelular" class="label"> N&uacute;mero de Celular para contacto</label>
+                        <input type="text" nbInput fullWidth id="txtNroCelular">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtNroDocumento" class="label"> Documento de Identidad</label>
+                        <input type="text" nbInput fullWidth id="txtNroDocumento">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtImgDocumento" class="label">Imagen Documento Identidad</label>
+                        <input type="file"  fullWidth id="txtImgDocumento">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" nbButton status="info">Enviar</button>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+        </div>
+
+        <div class="col-lg-6">
+            <nb-card>
+                <nb-card-header>
+                    <h3>Ubicaci&oacute;n</h3>
+                </nb-card-header>
+                <nb-card-body>
+                   <ngx-gmaps></ngx-gmaps>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </div>
+
+
+
+</div>

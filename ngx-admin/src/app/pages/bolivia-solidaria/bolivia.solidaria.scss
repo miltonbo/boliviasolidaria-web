@@ -1,0 +1,31 @@
+.validation-checkboxes {
+    display: flex;
+    margin: 0 -0.5rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  
+    > * {
+      margin: 0 0.5rem;
+    }
+  }
+  
+  .custom-checkbox {
+    background-color: white;
+    color: white;
+  }
+
+  .checkbox-radio {
+    display: flex;
+    color: white;
+    background-color: white;
+    background: white;
+
+  }
+
+  .box {
+      color: white;
+      background: white;
+      background-color: white;
+  }
