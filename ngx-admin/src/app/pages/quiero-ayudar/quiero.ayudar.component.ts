@@ -20,18 +20,6 @@ export class QuieroAyudarComponent implements OnInit {
         private service : QuieroAyudarService,
         ) {
 
-            let detectPosition = (position)=> {
-                this.center.lat = position.coords.latitude ;
-                this.center.lng = position.coords.longitude ;
-    
-                console.log(this.center) ;
-    
-            }
-    
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(detectPosition.bind) ;
-            }
-
         }
 
     
