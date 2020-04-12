@@ -11,6 +11,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import {BoliviaSolidariaModule} from './bolivia-solidaria/bolivia.solidaria.module' ;
 import { QuieroAyudarModule } from './quiero-ayudar/quiero.ayudar.module';
 import { NecesitoAyudaModule } from './necesito-ayuda/necesito.ayuda.module';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     PagesRoutingModule,

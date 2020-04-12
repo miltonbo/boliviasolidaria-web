@@ -1,10 +1,10 @@
 {
     "/bs-api/*" : {
         "target" : "https://boliviasolidaria.com",
-        "secure" : "true",
+        "secure" : "false",
         "logLevel" : "debug",
         "pathRewrite" : {
-            "^/bs-api" : "/bs-api"
+            "^/bs-api" : "https://boliviasolidaria.com/bs-api"
         },
         "changeOrigin" : true
     }

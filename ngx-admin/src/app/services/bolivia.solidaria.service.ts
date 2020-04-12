@@ -1,26 +1,22 @@
 import { Injectable, OnInit } from "@angular/core";
-import { SmartTableData } from '../@core/data/smart-table';
-import { HttpClient } from '@angular/common/http';
-import { retry, map } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { retry, map, catchError } from 'rxjs/operators';
 import {environment} from '../../environments/environment.prod' ;
 import { PuntosSolicitudesResponse } from '../data/response/solicitudes.response';
+import { AyudaSolicitudRequest } from '../data/request/solicitudes.request';
+import { AyudaSolicitudResponse } from '../data/response/ayuda.solicitud.response';
+import 'rxjs/add/operator/catch';
 
 @Injectable({
     providedIn : 'root',
 })
-
-export class BoliviaSolidariaService extends SmartTableData implements OnInit {
+export class BoliviaSolidariaService {
  
     baseUrl = environment.urlWS ;
 
     currentPosition = {lat : 0, lng : 0};
 
-    constructor(private http : HttpClient) {
-        super();
-    }
-
-    ngOnInit(): void {
-    }
+    constructor(private http : HttpClient) {}
     
     
     getData(): any[] {
@@ -36,6 +32,18 @@ export class BoliviaSolidariaService extends SmartTableData implements OnInit {
             })
         );
     }
+
+    realizarSolicitud(request: AyudaSolicitudRequest) {
+
+        return this.http.post<AyudaSolicitudResponse>(`${this.baseUrl}/solicitudes`, request)
+            .pipe(
+                retry(3),
+                map((response: AyudaSolicitudResponse)=> {
+                    return response ;
+                }), 
+            )
+    }
+
 
 
 }

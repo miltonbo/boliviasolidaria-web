@@ -22,11 +22,13 @@ export class GmapsComponent {
   @Input() showAcopio : boolean ;
   @Input() showZonas : boolean ;
 
-  position = { lat: 0, lng: 0 };
+  position : google.maps.LatLng ;
 
   punto: PuntosAcopioResponse = new PuntosAcopioResponse() ;
 
   @Input() center : google.maps.LatLng ;
+
+  @Input() enableClick : boolean = false;
 
   constructor() {
 
@@ -34,13 +36,12 @@ export class GmapsComponent {
       var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
   
       this.center = userLatLng;
-  
+      this.position = userLatLng ;
       this.map.center = userLatLng ;
   
       console.log(this.map.center) ;
     }
 
-    console.log('hola');
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(geolocationSuccess, this.geolocationError);
     }
@@ -50,11 +51,15 @@ export class GmapsComponent {
     console.log(error) ;
   }
 
-  
-
-  writeAddressName(latLng) {
-
+  onClickMap (event) {
+    if (this.enableClick) {
+      this.position = event.latLng.toJSON() ;
+    }
   }
+  
+selectedPosition () : any {
+  return this.position ;
+}
 
   openInfoWindow(marker,p){
     this.infoWindow.open(marker);

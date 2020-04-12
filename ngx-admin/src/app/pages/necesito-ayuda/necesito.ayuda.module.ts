@@ -4,6 +4,8 @@ import { NbCardModule, NbCheckboxModule, NbInputModule, NbButtonModule, NbAction
 import { ThemeModule } from '../../@theme/theme.module';
 import { MapsModule } from '../maps/maps.module';
 import { NecesitoAyudaComponent } from './necesito.ayuda.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -11,8 +13,10 @@ import { NecesitoAyudaComponent } from './necesito.ayuda.component';
     NbInputModule,
     NbCardModule,
     NbButtonModule,
-    NbActionsModule,
     NbCheckboxModule,
+    FormsModule,
+    ReactiveFormsModule,
+    GoogleMapsModule,
     MapsModule,
   ],
   exports: [
