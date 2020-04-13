@@ -69,6 +69,7 @@ export class GmapsComponent {
 
   openInfoWindow(marker, p) {
     this.persona = undefined ;
+    
     this.infoWindow.open(marker);
     this.punto = p;
   }
