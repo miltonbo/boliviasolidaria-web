@@ -58,7 +58,6 @@ export class NecesitoAyudaComponent {
             return ;
         }
 
-        console.log(this.map.selectedPosition());
 
         const position = this.map.selectedPosition().toJSON() ; 
 
@@ -73,27 +72,21 @@ export class NecesitoAyudaComponent {
                             this.router.navigate([environment.index], {queryParams : {solicitud : 'ok'} }) ;
                         }, 
                             error => {
-                                console.log(error)
                                 this.service.showToast('danger','Error', error.error.mensaje) ;
                             }
                         ) ;
                 },
                 error => {
-                    console.log(error)
                     this.service.showToast('danger','Error', error.error.mensaje) ;
                 }
             )
 
-        console.log(this.map.selectedPosition().toJSON());
-        console.log(this.txtImgDoc);
-        console.log(this.request) ;
     }
 
     onUploadFile(fileEvent) {
         const file = fileEvent.target.files[0];
         const size = file.size / 1024 ;
 
-        console.log(size);
         this.file = fileEvent.target.files[0];
 
         if (size < 10240){
@@ -103,7 +96,6 @@ export class NecesitoAyudaComponent {
             this.service. showToast('danger','Error','El archivo excede los 10 MB. permitidos.') ;
         }
 
-        console.log(this.esImagenInValida);
     }
     
     get nombre () {

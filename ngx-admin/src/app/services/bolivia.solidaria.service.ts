@@ -59,6 +59,16 @@ export class BoliviaSolidariaService {
         );
     }
 
+    getObtenerDetalleSolicitud(id) {
+        return this.http.get<any>(`${this.baseUrl}/solicitudes/${id}`)
+        .pipe(
+            retry(3),
+            map((response: AyudaSolicitudResponse) => {
+                return response ;
+            })
+        );
+    }
+
     realizarSolicitud(request: AyudaSolicitudRequest) {
 
         let headers = new HttpHeaders().set('Content-Type','application/json')

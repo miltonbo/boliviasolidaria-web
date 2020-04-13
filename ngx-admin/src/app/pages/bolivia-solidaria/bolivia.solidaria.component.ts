@@ -27,7 +27,6 @@ export class BoliviaSolidariaComponent implements OnInit {
 
     ngOnInit(): void {
         if (this.route.snapshot.queryParamMap.get('solicitud')){
-                console.log('ok');
                 this.service.showToast('success','Genial','Su Solicitud ha sido enviada!', 4000);
         }
     }
@@ -36,7 +35,6 @@ export class BoliviaSolidariaComponent implements OnInit {
         if(value) {
             this.service.getObtenerListaSolicitudes()
                 .subscribe((response:PuntosSolicitudesResponse)=>{
-                    console.log(response);
                     this.puntosAyuda = response ;
                 })
         } else {

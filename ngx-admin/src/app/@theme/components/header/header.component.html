@@ -1,23 +1,18 @@
 <div class="header-container">
-  <div class="row">
-    <div class="col-xs-8 col-sm-8">
-      <div class="logo-container">
-        <a class="logo" href="#" (click)="navigateHome()">
-          <img class="imagen" src="assets/images/index.png" />
-        </a>
-      </div>
+  <div class="col-xs-8 col-sm-8">
+    <div class="logo-container">
+      <a class="logo" href="#" (click)="navigateHome()">
+        <img class="imagen" src="assets/images/index.png" />
+      </a>
     </div>
-
   </div>
-
-
-
 </div>
 
-<div class="header-container">
-  <div class="header-container">
+
+
+<div class="header-container d-flex flex-row-reverse">
+  <div class=" bd-highlight">
     <button nbButton (click)="onClickQuieroAyudar()" status="info">Quiero Ayudar</button>
     <button nbButton (click)="onClickNecesitoAyuda()" status="danger">Necesito Ayuda</button>
   </div>
-
 </div>

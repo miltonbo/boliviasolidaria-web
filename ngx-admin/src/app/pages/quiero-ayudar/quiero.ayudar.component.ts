@@ -24,11 +24,8 @@ export class QuieroAyudarComponent implements OnInit {
 
     
     ngOnInit(): void {
-
-
         this.service.getReceptoresDonacion()
             .subscribe((response : ReceptoresDonacionResponse)=>{
-                console.log(response) ;
                 this.receptor = response ;
             })
 
