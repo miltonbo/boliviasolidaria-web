@@ -26,6 +26,8 @@ export class BoliviaSolidariaComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.onClickSolicitudes(true) ;
+
         if (this.route.snapshot.queryParamMap.get('solicitud')){
                 this.service.showToast('success','Genial','Su Solicitud ha sido enviada!', 4000);
         }

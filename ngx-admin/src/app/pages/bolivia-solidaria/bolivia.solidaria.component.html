@@ -4,7 +4,7 @@
     <div class="validation-checkboxes">
       <h3 style=" background-color: #D3D3D3; font-size: 6vmin; text-align: left;">Zonas que necesitan tu ayuda</h3>
       <div class="row">
-        <nb-checkbox status="danger" (checkedChange)="onClickSolicitudes($event)"><span> Solicitudes de ayuda</span>
+        <nb-checkbox status="danger" [value]="true" check (checkedChange)="onClickSolicitudes($event)"><span> Solicitudes de ayuda</span>
         </nb-checkbox>
         <nb-checkbox status="info" (checkedChange)="onClickCentrosAcopio($event)"><span>Centros de Acopio</span>
         </nb-checkbox>
