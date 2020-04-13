@@ -5,7 +5,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { NbComponentStatus, NbGlobalPhysicalPosition, NbToastrService, NbToastrConfig, NbGlobalPosition } from '@nebular/theme';
 import { BoliviaSolidariaService } from '../../services/bolivia.solidaria.service';
 import { AyudaSolicitudResponse } from '../../data/response/ayuda.solicitud.response';
-import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import {environment} from '../../../environments/environment.prod';
 
 @Component({
     selector: 'ngx-necesito-ayuda',
@@ -45,6 +46,7 @@ export class NecesitoAyudaComponent {
     constructor(private formBuilder: FormBuilder, 
         private toastrService: NbToastrService,
         private service : BoliviaSolidariaService,
+        private router : Router,
         ){}
 
     onEnviarSolicitud() {
@@ -56,7 +58,7 @@ export class NecesitoAyudaComponent {
             return ;
         }
 
-        console.log(this.map.selectedPosition().toJSON());
+        console.log(this.map.selectedPosition());
 
         const position = this.map.selectedPosition().toJSON() ; 
 
@@ -66,10 +68,19 @@ export class NecesitoAyudaComponent {
         this.service.realizarSolicitud(this.request)
             .subscribe(
                 (response : AyudaSolicitudResponse )=> {
-                    console.log(response ) ;
+                    this.service.enviarImagen(response, this.file)
+                        .subscribe((response)=> {
+                            this.router.navigate([environment.index], {queryParams : {solicitud : 'ok'} }) ;
+                        }, 
+                            error => {
+                                console.log(error)
+                                this.service.showToast('danger','Error', error.error.mensaje) ;
+                            }
+                        ) ;
                 },
                 error => {
-                    console.log(error) ;
+                    console.log(error)
+                    this.service.showToast('danger','Error', error.error.mensaje) ;
                 }
             )
 
@@ -85,34 +96,15 @@ export class NecesitoAyudaComponent {
         console.log(size);
         this.file = fileEvent.target.files[0];
 
-        if (size < 1024){
+        if (size < 10240){
             this.esImagenInValida = false ;
         } else {
             this.esImagenInValida  = true ;
-            this.showToast('danger','Error','El archivo excede los 1MB permitidos.') ;
+            this.service. showToast('danger','Error','El archivo excede los 10 MB. permitidos.') ;
         }
 
         console.log(this.esImagenInValida);
     }
-
-
-    private showToast(type: NbComponentStatus, title: string, body: string) {
-        const config = {
-          status: type,
-          destroyByClick: this.destroyByClick,
-          duration: this.duration,
-          hasIcon: this.hasIcon,
-          position: this.position,
-          preventDuplicates: this.preventDuplicates,
-        };
-        const titleContent = title ? `. ${title}` : '';
-    
-        this.index += 1;
-        this.toastrService.show(
-          body,
-          `Toast ${this.index}${titleContent}`,
-          config);
-      }
     
     get nombre () {
         return this.formAyuda.get('nombre');

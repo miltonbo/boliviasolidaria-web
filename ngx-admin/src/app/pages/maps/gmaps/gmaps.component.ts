@@ -39,7 +39,6 @@ export class GmapsComponent {
       this.position = userLatLng ;
       this.map.center = userLatLng ;
   
-      console.log(this.map.center) ;
     }
 
     if (navigator.geolocation) {
@@ -53,7 +52,9 @@ export class GmapsComponent {
 
   onClickMap (event) {
     if (this.enableClick) {
-      this.position = event.latLng.toJSON() ;
+      this.position = new google.maps.LatLng(event.latLng.toJSON().lat, event.latLng.toJSON().lng)
+      console.log(this.position) ;
+      //this.position = event.latLng.toJSON() ;
     }
   }
   

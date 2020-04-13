@@ -4,6 +4,7 @@ import { BoliviaSolidariaService } from '../../services/bolivia.solidaria.servic
 import { PuntosSolicitudesResponse } from '../../data/response/solicitudes.response';
 import { QuieroAyudarService } from '../../services/quiero.ayudar.service';
 import { PuntosAcopioResponse } from '../../data/response/puntos.acopio.response';
+import { ActivatedRoute } from '@angular/router';
 /// <reference types="@types/googlemaps" />
 
 @Component({
@@ -19,12 +20,16 @@ export class BoliviaSolidariaComponent implements OnInit {
 
     constructor (private service: BoliviaSolidariaService,
                 private quieroService: QuieroAyudarService,
+                private route: ActivatedRoute
         ) {
         
     }
 
     ngOnInit(): void {
-        
+        if (this.route.snapshot.queryParamMap.get('solicitud')){
+                console.log('ok');
+                this.service.showToast('success','Genial','Su Solicitud ha sido enviada!', 4000);
+        }
     }
 
     onClickSolicitudes(value){
