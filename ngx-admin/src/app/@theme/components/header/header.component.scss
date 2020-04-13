@@ -14,7 +14,7 @@
 
   .logo-container {
     display: flex;
-    width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
+    width: auto;
   }
 
   nb-action {

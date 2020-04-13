@@ -1,13 +1,15 @@
 <div style="background-color: grey;">
 
   <div class="column">
-
     <div class="validation-checkboxes">
-      <h3 style=" background-color: #D3D3D3">Zonas que necesitan tu ayuda</h3>
-      <nb-checkbox status="danger" (checkedChange)="onClickSolicitudes($event)"><span> Solicitudes de ayuda</span>
-      </nb-checkbox>
-      <nb-checkbox status="info" (checkedChange)="onClickCentrosAcopio($event)"><span>Centros de Acopio</span>
-      </nb-checkbox>
+      <h3 style=" background-color: #D3D3D3; font-size: 6vmin; text-align: left;">Zonas que necesitan tu ayuda</h3>
+      <div class="row">
+        <nb-checkbox status="danger" (checkedChange)="onClickSolicitudes($event)"><span> Solicitudes de ayuda</span>
+        </nb-checkbox>
+        <nb-checkbox status="info" (checkedChange)="onClickCentrosAcopio($event)"><span>Centros de Acopio</span>
+        </nb-checkbox>
+      </div>
+      
       <!-- <nb-checkbox status="success" (checkedChange)="onClickZonas($event)"><span>Zonas</span></nb-checkbox> -->
     </div>
   </div>
