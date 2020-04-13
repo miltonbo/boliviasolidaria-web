@@ -54,7 +54,7 @@ export class NecesitoAyudaComponent {
         const size = this.file.size / 1024 ;
 
         if (size > 1024) {
-            this.showToast('danger','Error','El archivo excede los 1MB permitidos.') ;
+            this.service.showToast('danger','Error','El archivo excede los 1MB permitidos.', 4000) ;
             return ;
         }
 
