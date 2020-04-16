@@ -44,15 +44,21 @@ export class GmapsComponent {
       this.position = userLatLng;
       this.map.center = userLatLng;
 
+      alert(userLatLng.toJSON());
+
     }
+
+    
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(geolocationSuccess, this.geolocationError);
+    }else {
+      alert('Geolocation is not supported')
     }
   }
 
   geolocationError(error) {
-    console.log(error);
+    alert(error.message);
   }
 
   onClickMap(event) {
