@@ -44,7 +44,7 @@ export class GmapsComponent {
       this.position = userLatLng;
       this.map.center = userLatLng;
 
-      alert(userLatLng.toJSON());
+      //alert(`lat:${userLatLng.lat()} lng:${userLatLng.lng()}`) ;
 
     }
 
